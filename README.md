@@ -24,10 +24,17 @@
 - 이차원 리스트 활용
 - 브루트포스(완전 검색)
 - 문자열 활용
+- 그래프
 
 
 
 ## 02. django
 
 - Authentication System
+- ORM
 
+
+
+## 03. DB
+
+- RDBMS
