@@ -24,7 +24,7 @@
 - 이차원 리스트 활용
 - 브루트포스(완전 검색)
 - 문자열 활용
-- 그래프
+- 그래프탐색
 
 
 
@@ -32,9 +32,18 @@
 
 - Authentication System
 - ORM
+- DRF
 
 
 
 ## 03. DB
 
 - RDBMS
+
+- restAPI
+
+
+
+## 04. javaScript
+
+- 기본 문법
