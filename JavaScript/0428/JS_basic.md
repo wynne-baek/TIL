@@ -170,7 +170,11 @@ console.log(newArray)		// [0, 1, 2, 3, 4]
      - initialValue(선택) : 최초 콜백 함수 호출 시 acc에 할당되는 값, default는 배열의 첫 번쨰 값
      - 빈 배열의 경우 initialValue 제공하지 않으면 에러 발생
   5. find : 콜백 함수의 **반환 값이 참이면 해당 요소를 반환**
+     - 조건을 만족하는 첫 번째 요소를 반환
+     - 찾는 값이 배열에 없으면 undefined 반환
   6. some : 배열의 **요소 중 하나라도 판별 함수를 통과**하면 참을 반환
+     - 모든 요소가 통과하지 못하면 거짓 반환
+     - 빈 배열은 항상 거짓 반환
   7. every : 배열의 **모든 요소가 판별 함수를 통과**하면 참을 반환
 
 ```javascript
@@ -208,5 +212,96 @@ const result = numbers.reduce((acc, num) => {
 // ^ initialValue
 
 console.log(result)		// 15
+
+// 5. find
+const avengers = [
+  { name : 'Tony', age : 45},
+  { name : 'Steve', age : 32},
+  { name : 'Thor', age : 400},
+  		// ^ 객체이기 때문에 속성에 값을 할당할 때는 : 사용, = 사용하지 않음!!
+]
+
+const ans = avengers.find((avenger) => {
+  return avenger.name === 'Tony'
+})
+
+console.log(ans) 		// {name: 'Tony', age: 45}
+
+// 6. some
+const numbers = [1, 3, 5, 7, 9]
+
+const hasEvenNumber = numbers.some((num) => {
+  return num % 2 === 0
+})
+console.log(hasEvenNumber)		// false
+
+const hasOddNumber = numbers.some((num) => {
+  return num % 2
+})
+console.log(hasOddNumber)			// true
+
+// 7. every
+const numbers = [2, 4, 6, 8, 10]
+
+const isEveryNumberEven = numbers.every((num) => {
+  return num % 2 === 0
+})
+console.log(isEveryNumberEven)		// true
+
+const isEveryNumberOdd = numbers.every((num) => {
+  return num % 2
+})
+console.log(isEveryNumberOdd)			// false
 ```
 
+- 배열 순회 방법 비교
+  1. for loop
+     - 모든 브라우저 환경에서 지원 
+     - 인덱스 활용해 배열의 요소에 접근
+     - break, continue 사용 가능
+  2. for ... of
+     - 일부 오래된 브라우저 환경에서 지원 X
+     - 인덱스 없이 배열의 요소에 바로 접근 가능
+     - break, continue 사용 가능
+  3. forEach
+     - 대부분의 브라우저 환경에서 지원
+     - **break, continue 사용 불가능**
+
+```javascript
+const chars = ['A', 'B', 'C', 'D']
+
+// for loop
+for (let idx = 0; idx < chars.length; idx++) {
+  console.log(idx, chars[idx])
+}
+// 0 A
+// 1 B
+// 2 C
+// 3 D
+
+// for ... of
+for (const char of chars) {
+  console.log(char)
+}
+// A
+// B
+// C
+// D
+
+// forEach
+chars.forEach((char, idx) => {
+  console.log(idx, char)
+})
+// 0 A
+// 1 B
+// 2 C
+// 3 D
+
+chars.forEach(char => {
+  console.log(char)
+})
+// A
+// B
+// C
+// D
+```
