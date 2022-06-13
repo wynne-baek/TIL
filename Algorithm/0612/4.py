@@ -54,5 +54,5 @@ def solution(grid, k):
                     break
         if cnt < min_cnt:
             min_cnt = cnt
-    answer = cnt -1
+    answer = min_cnt -1
     return answer
